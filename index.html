@@ -32,14 +32,16 @@
 <style>
 /* ===== PSAT 정답·해설 모음 — 차분한 PSAT 친화 테마 ===== */
 :root{
-  --bg:        #f4f6f5;
+  --bg:        #eef2f7;   /* 블루그레이 배경 */
   --surface:   #ffffff;
-  --ink:       #2b3137;
-  --ink-soft:  #5d666e;
-  --line:      #e2e7e6;
-  --accent:    #4a7c6f;   /* 차분한 세이지 그린 */
-  --accent-d:  #3a6356;
-  --accent-bg: #e8f0ed;
+  --ink:       #2a2e35;
+  --ink-soft:  #68707c;
+  --line:      #e1e7f0;
+  --accent:    #2c4068;   /* 네이비 (메인) */
+  --accent-d:  #1e2e4d;   /* 딥 네이비 */
+  --accent-bg: #e6ecf5;
+  --blue:      #3388c6;   /* PSAT 블루 (보조·다운로드) */
+  --chest:     #9b5e2c;   /* 밤 브라운 포인트 */
   --warn:      #b5814a;   /* 무료 배지 */
   --warn-bg:   #f6edde;
   --premium:   #4a6b8a;   /* 프리미엄 링크 */
@@ -47,7 +49,7 @@
   --blog:      #6a5a82;   /* 블로그 링크 */
   --blog-bg:   #eee9f3;
   --radius:    12px;
-  --shadow:    0 1px 3px rgba(40,55,50,.06), 0 4px 16px rgba(40,55,50,.05);
+  --shadow:    0 1px 3px rgba(30,40,60,.06), 0 4px 16px rgba(30,40,60,.05);
 }
 
 *{box-sizing:border-box;}
@@ -64,7 +66,7 @@ body{
 
 /* ===== 헤더 ===== */
 .site-header{
-  background:linear-gradient(160deg,#4a7c6f 0%,#3a6356 100%);
+  background:linear-gradient(160deg,#33507f 0%,#1e2e4d 100%);
   color:#fff;
   padding:34px 0 30px;
   box-shadow:var(--shadow);
@@ -167,7 +169,7 @@ main.wrap{padding-top:26px;padding-bottom:48px;}
 .chip:hover{border-color:var(--accent);color:var(--accent-d);}
 .chip.active{
   background:var(--accent);border-color:var(--accent);color:#fff;
-  box-shadow:0 2px 6px rgba(74,124,111,.3);
+  box-shadow:0 2px 6px rgba(44,64,104,.32);
 }
 .chip.year-chip{min-width:62px;text-align:center;}
 
@@ -182,8 +184,13 @@ main.wrap{padding-top:26px;padding-bottom:48px;}
   display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;
   margin:6px 2px 14px;
 }
-.result-title{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;}
+.result-title{font-size:1.2rem;font-weight:700;letter-spacing:-.01em;color:var(--acc,var(--accent-d));}
 .result-meta{color:var(--ink-soft);font-size:.9rem;}
+
+/* 영역별 강조색 (결과 영역에 적용) */
+#result.area-lang{--acc:#d6534a;--acc-bg:#fbeae8;}
+#result.area-data{--acc:#2f9e68;--acc-bg:#e7f4ec;}
+#result.area-sit{--acc:#3a86c8;--acc-bg:#e6f1fa;}
 
 /* ===== 표 ===== */
 .tables-2col{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start;}
@@ -191,20 +198,20 @@ main.wrap{padding-top:26px;padding-bottom:48px;}
   background:var(--surface);border:1px solid var(--line);
   border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);
 }
-table.answers{width:100%;border-collapse:collapse;font-size:.95rem;}
+table.answers{width:100%;border-collapse:collapse;font-size:.95rem;table-layout:fixed;}
 table.answers th,table.answers td{
   padding:11px 14px;text-align:left;border-bottom:1px solid var(--line);
 }
 table.answers thead th{
-  background:var(--accent-bg);color:var(--accent-d);
+  background:var(--acc-bg,var(--accent-bg));color:var(--acc,var(--accent-d));
   font-weight:700;font-size:.85rem;
   position:sticky;top:0;
 }
 table.answers tbody tr:last-child td{border-bottom:none;}
 table.answers tbody tr:hover{background:#f7faf9;}
 .col-no{width:64px;color:var(--ink-soft);font-weight:500;white-space:nowrap;}
-.cell-answer{font-size:1.15rem;font-weight:700;color:var(--accent-d);}
-.col-ans{width:72px;}
+.col-ans,.cell-answer{width:72px;}
+.cell-answer{font-size:1.15rem;font-weight:700;color:var(--acc,var(--accent-d));}
 
 /* 해설 링크 버튼 */
 .sol-links{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
@@ -227,9 +234,9 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .dl-btn{
   display:inline-flex;align-items:center;gap:8px;
   padding:11px 20px;border-radius:10px;
-  background:var(--accent);color:#fff;
+  background:var(--blue);color:#fff;
   font-size:.95rem;font-weight:700;text-decoration:none;
-  box-shadow:0 2px 8px rgba(74,124,111,.28);
+  box-shadow:0 2px 8px rgba(51,136,198,.28);
   transition:filter .12s,transform .05s;
 }
 .dl-btn:hover{filter:brightness(1.05);}
@@ -249,7 +256,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
   border-radius:7px;padding:5px 2px;
 }
 .qa-cell .n{display:block;font-size:.7rem;color:var(--ink-soft);}
-.qa-cell .a{display:block;font-size:1rem;font-weight:700;color:var(--accent-d);}
+.qa-cell .a{display:block;font-size:1rem;font-weight:700;color:var(--acc,var(--accent-d));}
 
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
@@ -278,7 +285,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
 <body>
 <header class="site-header">
   <div class="wrap">
-    <h1>🔍 PSAT 기출 정답·해설 모음</h1>
+    <h1>🌰 PSAT 기출 정답·해설 모음</h1>
     <p class="subtitle">시험구분 → 연도 → 영역을 고르면 문항별 정답과 해설 링크를 보여드립니다.</p>
     <div class="header-actions">
       <button id="btn-bookmark" class="hbtn" type="button"><span aria-hidden="true">☆</span> 즐겨찾기</button>
@@ -488,7 +495,10 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
   }
 
   /* ---------- 결과 표 ---------- */
+  const AREA_CLASS = { "언어논리": "area-lang", "자료해석": "area-data", "상황판단": "area-sit" };
+
   function renderResult() {
+    el.result.className = "result";
     if (!state.cat || !state.year || !state.area) {
       el.result.innerHTML =
         '<div class="placeholder"><p>위에서 시험구분·연도·영역을 선택하면 정답표가 나타납니다.</p></div>';
@@ -509,6 +519,7 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
       return;
     }
 
+    el.result.className = "result " + (AREA_CLASS[state.area] || "");
     const examLabel = rows[0].label || `${state.year} ${state.cat}`;
     const bookLabel = state.book ? `${state.book}책형 · ` : "";
     let html = "";
