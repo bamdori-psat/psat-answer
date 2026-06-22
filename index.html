@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="google-site-verification" content="juoU4UsrOt6DE8bl7cLdJIzfF07KdmNfM5XKw_UOQik" />
-<link rel="icon" type="image/x-icon" href="favicon.ico?v=2">
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=2">
-<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=2">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=2">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <title>PSAT 기출문제 정답·해설 모음</title>
 <meta name="description" content="5급·7급·민경채 PSAT 기출문제의 정답과 해설 링크, 문제지 원본 PDF를 시험구분·연도·영역별로 한눈에 조회하고 내려받을 수 있는 페이지입니다.">
 <link rel="canonical" href="https://bamdori-psat.github.io/psat-answer/">
@@ -258,6 +258,11 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .qa-cell .n{display:block;font-size:.7rem;color:var(--ink-soft);}
 .qa-cell .a{display:block;font-size:1.1rem;font-weight:700;color:var(--ink);}
 
+/* 목록 페이지로 가는 내부 링크 */
+.more-footer{border-top:1px solid var(--line);padding:20px 0;text-align:center;}
+.more-footer a{color:var(--blue);font-weight:600;text-decoration:none;font-size:.93rem;}
+.more-footer a:hover{text-decoration:underline;}
+
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
 .site-footer p{margin:0;color:var(--ink-soft);font-size:.85rem;text-align:center;}
@@ -326,6 +331,10 @@ table.answers tbody tr:hover{background:#f7faf9;}
     </div>
   </section>
 </main>
+
+<footer class="more-footer">
+  <div class="wrap"><a href="e/">전체 시험별 정답·해설 목록 보기 →</a></div>
+</footer>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
