@@ -72,6 +72,63 @@ body{
 .site-header h1{margin:0;font-size:1.55rem;font-weight:700;letter-spacing:-.02em;}
 .subtitle{margin:8px 0 0;color:#dcebe6;color:rgba(255,255,255,.85);font-size:.95rem;}
 
+/* 헤더 액션 버튼 (즐겨찾기·공유) */
+.header-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
+.hbtn{
+  appearance:none;cursor:pointer;font-family:inherit;
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 16px;border-radius:999px;
+  background:rgba(255,255,255,.16);
+  border:1.5px solid rgba(255,255,255,.55);
+  color:#fff;font-size:.9rem;font-weight:600;
+  transition:background .15s,transform .05s;
+}
+.hbtn:hover{background:rgba(255,255,255,.28);}
+.hbtn:active{transform:translateY(1px);}
+
+/* 토스트 알림 */
+.toast{
+  position:fixed;left:50%;bottom:30px;
+  transform:translateX(-50%) translateY(18px);
+  background:#2b3137;color:#fff;
+  padding:12px 20px;border-radius:11px;
+  font-size:.92rem;font-weight:500;max-width:90vw;text-align:center;
+  box-shadow:0 6px 24px rgba(0,0,0,.22);
+  opacity:0;pointer-events:none;z-index:1000;
+  transition:opacity .25s,transform .25s;
+}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* 링크 공유 팝업 */
+.share-pop{
+  position:fixed;inset:0;z-index:1100;padding:20px;
+  background:rgba(30,40,36,.45);
+  display:flex;align-items:center;justify-content:center;
+}
+.share-box{
+  background:#fff;border-radius:14px;padding:22px 22px 18px;
+  max-width:400px;width:100%;box-shadow:0 12px 40px rgba(0,0,0,.25);
+}
+.share-box h3{margin:0 0 6px;font-size:1.05rem;color:var(--ink);}
+.share-box p{margin:0 0 12px;font-size:.88rem;color:var(--ink-soft);}
+.share-box input{
+  width:100%;box-sizing:border-box;padding:10px 12px;
+  border:1.5px solid var(--line);border-radius:8px;
+  font-size:.9rem;font-family:inherit;color:var(--ink);background:#fafbfb;
+}
+.share-actions{display:flex;gap:8px;margin-top:14px;justify-content:flex-end;}
+.sp-primary{
+  background:var(--accent);color:#fff;border:none;
+  padding:9px 18px;border-radius:8px;font-weight:600;
+  cursor:pointer;font-family:inherit;font-size:.9rem;
+}
+.sp-primary:hover{filter:brightness(1.05);}
+.sp-ghost{
+  background:#f0f2f2;color:var(--ink-soft);border:none;
+  padding:9px 16px;border-radius:8px;
+  cursor:pointer;font-family:inherit;font-size:.9rem;
+}
+
 /* ===== 단계 섹션 ===== */
 main.wrap{padding-top:26px;padding-bottom:48px;}
 .step{
@@ -223,6 +280,10 @@ table.answers tbody tr:hover{background:#f7faf9;}
   <div class="wrap">
     <h1>🔍 PSAT 기출 정답·해설 모음</h1>
     <p class="subtitle">시험구분 → 연도 → 영역을 고르면 문항별 정답과 해설 링크를 보여드립니다.</p>
+    <div class="header-actions">
+      <button id="btn-bookmark" class="hbtn" type="button"><span aria-hidden="true">☆</span> 즐겨찾기</button>
+      <button id="btn-share" class="hbtn" type="button"><span aria-hidden="true">↗</span> 공유하기</button>
+    </div>
   </div>
 </header>
 
@@ -258,6 +319,8 @@ table.answers tbody tr:hover{background:#f7faf9;}
     </div>
   </section>
 </main>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 
 <script>
 // PSAT 정답·해설 데이터 (자동 생성)
@@ -509,6 +572,109 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     }
     if (!parts.length) return '<span class="no-sol">—</span>';
     return `<div class="sol-links">${parts.join("")}</div>`;
+  }
+
+  /* ---------- 즐겨찾기 · 공유 ---------- */
+  function showToast(msg) {
+    const t = document.getElementById("toast");
+    if (!t) return;
+    t.textContent = msg;
+    t.classList.add("show");
+    clearTimeout(t._tid);
+    t._tid = setTimeout(() => t.classList.remove("show"), 2800);
+  }
+
+  function shareUrl() {
+    // 해시·쿼리를 뺀 깔끔한 주소
+    return location.origin + location.pathname;
+  }
+
+  // 구형 폴백 복사 (제한 환경에서도 동작)
+  function legacyCopy(text) {
+    try {
+      const ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      const ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+      return ok;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  async function copyLink(url) {
+    if (navigator.clipboard && window.isSecureContext) {
+      try { await navigator.clipboard.writeText(url); return true; } catch (e) {/* 폴백 */}
+    }
+    return legacyCopy(url);
+  }
+
+  // 자동 복사가 막힌 환경용 링크 팝업
+  function openSharePopup(url) {
+    const old = document.getElementById("share-pop");
+    if (old) old.remove();
+    const ov = document.createElement("div");
+    ov.id = "share-pop";
+    ov.className = "share-pop";
+    ov.innerHTML =
+      '<div class="share-box" role="dialog" aria-modal="true" aria-label="링크 공유">' +
+      "<h3>링크 공유</h3>" +
+      "<p>아래 주소를 복사해 공유하세요.</p>" +
+      '<input id="share-url" type="text" readonly>' +
+      '<div class="share-actions">' +
+      '<button id="share-copy" type="button" class="sp-primary">복사</button>' +
+      '<button id="share-close" type="button" class="sp-ghost">닫기</button>' +
+      "</div></div>";
+    document.body.appendChild(ov);
+    const input = ov.querySelector("#share-url");
+    input.value = url;
+    input.focus();
+    input.select();
+    const close = () => ov.remove();
+    ov.querySelector("#share-copy").addEventListener("click", async () => {
+      const ok = await copyLink(url);
+      if (ok) { showToast("링크가 복사되었습니다."); close(); }
+      else { input.focus(); input.select(); showToast("주소를 길게 눌러(또는 Ctrl+C로) 복사해 주세요."); }
+    });
+    ov.querySelector("#share-close").addEventListener("click", close);
+    ov.addEventListener("click", (e) => { if (e.target === ov) close(); });
+    document.addEventListener("keydown", function esc(e) {
+      if (e.key === "Escape") { close(); document.removeEventListener("keydown", esc); }
+    });
+  }
+
+  const shareBtn = document.getElementById("btn-share");
+  if (shareBtn) {
+    shareBtn.addEventListener("click", async () => {
+      const url = shareUrl();
+      if (navigator.share) {
+        try { await navigator.share({ title: document.title, text: "PSAT 기출 정답·해설·문제지 모음", url }); return; }
+        catch (err) { if (err && err.name === "AbortError") return; /* 그 외엔 복사로 폴백 */ }
+      }
+      const ok = await copyLink(url);
+      if (ok) showToast("링크가 복사되었습니다. 붙여넣어 공유해 보세요!");
+      else openSharePopup(url);
+    });
+  }
+
+  const bookmarkBtn = document.getElementById("btn-bookmark");
+  if (bookmarkBtn) {
+    bookmarkBtn.addEventListener("click", () => {
+      const ua = navigator.userAgent || "";
+      const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+      if (isMobile) {
+        showToast("브라우저 메뉴(공유)에서 ‘즐겨찾기’ 또는 ‘홈 화면에 추가’를 선택하세요.");
+      } else {
+        const isMac = /Mac/i.test(navigator.platform || ua);
+        showToast((isMac ? "⌘ + D" : "Ctrl + D") + " 를 눌러 즐겨찾기에 추가하세요.");
+      }
+    });
   }
 
   /* ---------- 초기화 ---------- */
