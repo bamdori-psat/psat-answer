@@ -211,7 +211,7 @@ table.answers tbody tr:last-child td{border-bottom:none;}
 table.answers tbody tr:hover{background:#f7faf9;}
 .col-no{width:64px;color:var(--ink-soft);font-weight:500;white-space:nowrap;}
 .col-ans,.cell-answer{width:72px;}
-.cell-answer{font-size:1.15rem;font-weight:700;color:var(--acc,var(--accent-d));}
+.cell-answer{font-size:1.28rem;font-weight:700;color:var(--ink);}
 
 /* 해설 링크 버튼 */
 .sol-links{display:flex;flex-wrap:wrap;gap:6px;align-items:center;}
@@ -245,18 +245,18 @@ table.answers tbody tr:hover{background:#f7faf9;}
 
 /* 정답 한눈에 보기 */
 .quick-answers{
-  background:var(--surface);border:1px solid var(--line);
+  background:var(--acc-bg,var(--surface));border:1px solid var(--line);
   border-radius:var(--radius);box-shadow:var(--shadow);
   padding:14px 16px;margin-bottom:14px;
 }
-.quick-answers h3{margin:0 0 10px;font-size:.9rem;color:var(--ink-soft);font-weight:700;}
+.quick-answers h3{margin:0 0 10px;font-size:.9rem;color:var(--acc,var(--ink-soft));font-weight:700;}
 .qa-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:6px;}
 .qa-cell{
-  text-align:center;background:#fafbfb;border:1px solid var(--line);
+  text-align:center;background:#fff;border:1px solid var(--line);
   border-radius:7px;padding:5px 2px;
 }
 .qa-cell .n{display:block;font-size:.7rem;color:var(--ink-soft);}
-.qa-cell .a{display:block;font-size:1rem;font-weight:700;color:var(--acc,var(--accent-d));}
+.qa-cell .a{display:block;font-size:1.1rem;font-weight:700;color:var(--ink);}
 
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
