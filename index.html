@@ -260,7 +260,10 @@ table.answers tbody tr:hover{background:#f7faf9;}
 
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
-.site-footer p{margin:0;color:var(--ink-soft);font-size:.85rem;text-align:center;}
+.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 18px;}
+.site-footer .foot-label{color:var(--ink-soft);font-weight:700;font-size:.85rem;}
+.site-footer a{color:var(--blue);text-decoration:none;font-size:.9rem;font-weight:600;}
+.site-footer a:hover{text-decoration:underline;}
 
 @media (max-width:560px){
   .site-header h1{font-size:1.3rem;}
@@ -290,8 +293,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
     <div class="header-actions">
       <button id="btn-bookmark" class="hbtn" type="button"><span aria-hidden="true">☆</span> 즐겨찾기</button>
       <button id="btn-share" class="hbtn" type="button"><span aria-hidden="true">↗</span> 공유하기</button>
-      <a class="hbtn" href="https://contents.premium.naver.com/psatbamdori/psat/contents/230723194227686hg" target="_blank" rel="noopener">논리퀴즈 해설모음</a>
-      <a class="hbtn" href="https://contents.premium.naver.com/psatbamdori/psat/contents/231112220820000bl" target="_blank" rel="noopener">논증실험 해설모음</a>
+      <a class="hbtn" href="https://bamdori-psat.github.io/guide/" target="_blank" rel="noopener"><span aria-hidden="true">ⓘ</span> 밤도리 PSAT 이용안내</a>
     </div>
   </div>
 </header>
@@ -328,6 +330,14 @@ table.answers tbody tr:hover{background:#f7faf9;}
     </div>
   </section>
 </main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <span class="foot-label">밤도리 PSAT</span>
+    <a href="https://contents.premium.naver.com/psatbamdori/psat/contents/230723194227686hg" target="_blank" rel="noopener">논리퀴즈 해설모음</a>
+    <a href="https://contents.premium.naver.com/psatbamdori/psat/contents/231112220820000bl" target="_blank" rel="noopener">논증실험 해설모음</a>
+  </div>
+</footer>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
 
