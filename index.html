@@ -3,6 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MWXTR1HG2N"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MWXTR1HG2N');
+</script>
 <meta name="google-site-verification" content="juoU4UsrOt6DE8bl7cLdJIzfF07KdmNfM5XKw_UOQik" />
 <link rel="icon" type="image/x-icon" href="icon.ico">
 <link rel="icon" type="image/png" sizes="32x32" href="icon-32.png">
@@ -573,7 +581,8 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
       const dlName = `${examLabel.replace(/\s+/g, "_")}_${state.area}.pdf`;
       html +=
         `<div class="dl-row"><a class="dl-btn" href="${encodeURI(PDF_BASE + pdfPath)}" ` +
-        `download="${dlName}" target="_blank" rel="noopener">` +
+        `download="${dlName}" target="_blank" rel="noopener" ` +
+        `data-ev="pdf" data-exam="${examLabel}" data-area="${state.area}">` +
         `<span class="dl-ico">📄</span> 기출문제 원본 다운로드 (PDF)</a></div>`;
     }
 
@@ -608,16 +617,18 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
 
   function solutionCell(r) {
     const parts = [];
+    const ev = `data-ev="solution" data-exam="${r.label}" data-area="${r.a}" data-q="${r.n}"`;
     if (r.p) {
       const cls = r.free ? "premium-free" : "premium";
       const label = r.free ? "프리미엄 해설(무료)" : "프리미엄 해설";
+      const type = r.free ? "premium_free" : "premium";
       parts.push(
-        `<a class="sol-link ${cls}" href="${r.p}" target="_blank" rel="noopener">${label}</a>`
+        `<a class="sol-link ${cls}" href="${r.p}" target="_blank" rel="noopener" ${ev} data-type="${type}">${label}</a>`
       );
     }
     if (r.g) {
       parts.push(
-        `<a class="sol-link blog" href="${r.g}" target="_blank" rel="noopener">블로그 해설</a>`
+        `<a class="sol-link blog" href="${r.g}" target="_blank" rel="noopener" ${ev} data-type="blog">블로그 해설</a>`
       );
     }
     if (!parts.length) return '<span class="no-sol">—</span>';
@@ -726,6 +737,25 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
       }
     });
   }
+
+  /* ---------- 해설·PDF 클릭 추적 (GA4) ---------- */
+  el.result.addEventListener("click", function (e) {
+    const a = e.target.closest("a[data-ev]");
+    if (!a || typeof gtag !== "function") return;
+    if (a.dataset.ev === "solution") {
+      gtag("event", "solution_click", {
+        exam: a.dataset.exam,
+        area: a.dataset.area,
+        question: Number(a.dataset.q),
+        sol_type: a.dataset.type,
+      });
+    } else if (a.dataset.ev === "pdf") {
+      gtag("event", "pdf_download", {
+        exam: a.dataset.exam,
+        area: a.dataset.area,
+      });
+    }
+  });
 
   /* ---------- 초기화 ---------- */
   renderCategories();
