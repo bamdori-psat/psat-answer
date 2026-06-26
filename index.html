@@ -617,7 +617,8 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
 
   function solutionCell(r) {
     const parts = [];
-    const ev = `data-ev="solution" data-exam="${r.label}" data-area="${r.a}" data-q="${r.n}"`;
+    const itemId = `${r.label} ${r.a} ${r.n}번`;
+    const ev = `data-ev="solution" data-exam="${r.label}" data-area="${r.a}" data-q="${r.n}" data-item="${itemId}"`;
     if (r.p) {
       const cls = r.free ? "premium-free" : "premium";
       const label = r.free ? "프리미엄 해설(무료)" : "프리미엄 해설";
@@ -744,6 +745,7 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     if (!a || typeof gtag !== "function") return;
     if (a.dataset.ev === "solution") {
       gtag("event", "solution_click", {
+        item: a.dataset.item,
         exam: a.dataset.exam,
         area: a.dataset.area,
         question: Number(a.dataset.q),
