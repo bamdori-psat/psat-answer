@@ -325,7 +325,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
   <!-- 공지사항 콜아웃 -->
   <section class="notice" aria-label="공지사항">
     <span class="notice-ico" aria-hidden="true">📢</span>
-    <p class="notice-text"><strong>2026 7급 총평 라이브</strong> 시험 당일 8시 → <a href="https://www.youtube.com/live/xrlqj5V2X7U?si=uGh9_554fIiI0ClX" target="_blank" rel="noopener">알림 설정</a></p>
+    <p class="notice-text"><strong>2026 7급 총평 라이브</strong> 시험 당일 8시 → <a href="https://www.youtube.com/live/xrlqj5V2X7U?si=uGh9_554fIiI0ClX" target="_blank" rel="noopener" id="notice-live-link">알림 설정</a></p>
   </section>
 
   <!-- 1단계: 시험구분 -->
@@ -758,6 +758,16 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
       });
     }
   });
+
+  /* ---------- 공지 라이브 링크 클릭 추적 (GA4) ---------- */
+  const liveLink = document.getElementById("notice-live-link");
+  if (liveLink) {
+    liveLink.addEventListener("click", function () {
+      if (typeof gtag === "function") {
+        gtag("event", "notice_live_click", { link_id: "2607live" });
+      }
+    });
+  }
 
   /* ---------- 초기화 ---------- */
   renderCategories();
