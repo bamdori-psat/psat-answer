@@ -161,6 +161,18 @@ body{
 .notice-head{display:flex;align-items:center;gap:6px;margin:0;font-size:1.02rem;font-weight:700;color:var(--chest);}
 .notice-head .yt-ico{display:inline-flex;line-height:0;}
 .notice-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.notice-thumbs.single{display:block;grid-template-columns:none;}
+.nt.nt-wide{display:flex;align-items:center;gap:16px;}
+.nt-wide .nt-img{flex:0 0 240px;width:240px;}
+.nt-desc{display:flex;flex-direction:column;color:#5e4d33;}
+.nt-desc-title{font-size:1.02rem;font-weight:700;color:var(--chest);}
+.nt-desc-when{font-size:.92rem;margin:2px 0 8px;}
+.nt-desc-body{font-size:.92rem;line-height:1.45;}
+@media(max-width:560px){
+  .nt.nt-wide{flex-direction:column;align-items:stretch;gap:8px;}
+  .nt-wide .nt-img{flex:none;width:100%;}
+  .nt-desc{text-align:center;}
+}
 .nt{display:block;text-decoration:none;color:inherit;}
 .nt-img{position:relative;display:block;aspect-ratio:16/9;border-radius:7px;overflow:hidden;background:#e7d9be;border:1px solid #e2cfa8;}
 .nt-img img{width:100%;height:100%;object-fit:cover;display:block;}
@@ -353,19 +365,15 @@ table.answers tbody tr:hover{background:#f7faf9;}
 <main class="wrap">
   <!-- 공지사항 콜아웃 -->
   <section class="notice notice-yt" aria-label="공지사항">
-    <p class="notice-head"><span class="yt-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="#FF0000" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></span> 7급 PSAT 보러 가신다면, 지금 꼭 보세요</p>
-    <div class="notice-thumbs">
-        <a class="nt" href="https://www.youtube.com/live/CsMez-K0ISg?si=z4cC_StnIwq_dTK0" target="_blank" rel="noopener">
-          <span class="nt-img"><img src="https://img.youtube.com/vi/CsMez-K0ISg/mqdefault.jpg" alt="" loading="lazy"><span class="nt-badge nt-live">LIVE</span><span class="nt-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span></span>
-          <span class="nt-title">시험 전일 Live🔥</span>
-        </a>
-        <a class="nt" href="https://youtube.com/playlist?list=PLfnmEPXA-nJc&si=Fr6RTn79gldFe687" target="_blank" rel="noopener">
-          <span class="nt-img"><img src="https://img.youtube.com/vi/saKEtVhd5Rk/mqdefault.jpg" alt="" loading="lazy"><span class="nt-plist">▤ 재생목록</span><span class="nt-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span></span>
-          <span class="nt-title">마무리특강✨</span>
-        </a>
-        <a class="nt" href="https://www.youtube.com/live/xrlqj5V2X7U?si=uGh9_554fIiI0ClX" target="_blank" rel="noopener" id="notice-live-link">
+    <p class="notice-head"><span class="yt-ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="#FF0000" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.6V8.4l6.2 3.6-6.2 3.6z"/></svg></span> 7급 응시자 여러분, 고생 많으셨습니다</p>
+    <div class="notice-thumbs single">
+        <a class="nt nt-wide" href="https://www.youtube.com/live/xrlqj5V2X7U?si=uGh9_554fIiI0ClX" target="_blank" rel="noopener" id="notice-live-link">
           <span class="nt-img"><img src="https://img.youtube.com/vi/xrlqj5V2X7U/mqdefault.jpg" alt="" loading="lazy"><span class="nt-badge nt-live">LIVE</span><span class="nt-play"><span><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span></span>
-          <span class="nt-title">총평 Live PM 8</span>
+          <span class="nt-desc">
+            <span class="nt-desc-title">박문각 PSAT 팀 7급 총평 Live</span>
+            <span class="nt-desc-when">7.18.(토) 20:00~</span>
+            <span class="nt-desc-body">시험 관련 질문, 추후 학습 관련 상담<br>무엇이든 물어보세요!</span>
+          </span>
         </a>
     </div>
   </section>
