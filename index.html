@@ -322,6 +322,13 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .qa-cell .n{display:block;font-size:.7rem;color:var(--ink-soft);}
 .qa-cell .a{display:block;font-size:1.1rem;font-weight:700;color:var(--ink);}
 
+/* ===== 검색량 1위 배너 ===== */
+.banner-rank{margin-top:26px;}
+.banner-rank img{width:100%;height:auto;border-radius:var(--radius);display:block;}
+@media (max-width:560px){
+  .banner-rank{margin-top:16px;}
+}
+
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
 .site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 18px;}
@@ -398,6 +405,12 @@ table.answers tbody tr:hover{background:#f7faf9;}
     <div class="placeholder" id="placeholder">
       <p>위에서 시험구분·연도·영역을 선택하면 정답표가 나타납니다.</p>
     </div>
+  </section>
+
+  <!-- 검색량 1위 배너 -->
+  <section class="banner-rank">
+    <img src="banner-rank-indigo.png" width="1520" height="300" loading="lazy"
+         alt="수험생들이 학원보다도 많이 찾는 압도적 1위 밤도리PSAT — 주요 4개 브랜드간 네이버 검색어 트렌드 검색량 비교 결과 1위 (2026.06 기준)">
   </section>
 </main>
 
