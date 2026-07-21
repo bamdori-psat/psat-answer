@@ -98,6 +98,15 @@ body{
 }
 .hbtn:hover{background:rgba(255,255,255,.28);}
 .hbtn:active{transform:translateY(1px);}
+.hbtn{position:relative;}
+.hbtn-badge{
+  position:absolute;top:0;right:-8px;transform:translateY(-50%);
+  padding:1px 6px;border-radius:999px;
+  background:#ff5a5f;color:#fff;
+  font-size:.6rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;line-height:1.5;
+  box-shadow:0 1px 3px rgba(0,0,0,.28);
+  pointer-events:none;
+}
 
 /* 토스트 알림 */
 .toast{
@@ -364,7 +373,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
     <div class="header-actions">
       <button id="btn-bookmark" class="hbtn" type="button"><span aria-hidden="true">☆</span> 즐겨찾기</button>
       <button id="btn-share" class="hbtn" type="button"><span aria-hidden="true">↗</span> 공유하기</button>
-      <a class="hbtn" href="https://bamdori-psat.github.io/guide/" target="_blank" rel="noopener"><span aria-hidden="true">ⓘ</span> 밤도리 PSAT 이용안내</a>
+      <a class="hbtn" href="https://bamdori-psat.github.io/guide/" target="_blank" rel="noopener"><span aria-hidden="true">ⓘ</span> 밤도리 PSAT 이용안내<span class="hbtn-badge">update</span></a>
     </div>
   </div>
 </header>
@@ -409,8 +418,10 @@ table.answers tbody tr:hover{background:#f7faf9;}
 
   <!-- 검색량 1위 배너 -->
   <section class="banner-rank">
-    <img src="banner-rank-indigo.png" width="1520" height="300" loading="lazy"
-         alt="수험생들이 학원보다도 많이 찾는 압도적 1위 밤도리PSAT — 주요 4개 브랜드간 네이버 검색어 트렌드 검색량 비교 결과 1위 (2026.06 기준)">
+    <a href="https://bamdori-psat.github.io/guide/" target="_blank" rel="noopener" aria-label="밤도리 PSAT 이용안내 보기">
+      <img src="banner-rank-indigo.png" width="1520" height="300" loading="lazy"
+           alt="수험생들이 학원보다도 많이 찾는 압도적 1위 밤도리PSAT — 주요 4개 브랜드간 네이버 검색어 트렌드 검색량 비교 결과 1위 (2026.06 기준)">
+    </a>
   </section>
 </main>
 
