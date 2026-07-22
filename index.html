@@ -307,6 +307,14 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .dl-btn:active{transform:translateY(1px);}
 .dl-ico{font-size:1.05rem;}
 
+/* psat-stat 유입 버튼 */
+.dl-row{display:flex;flex-wrap:wrap;gap:10px;}
+.stat-btn{
+  background:#b5663a;
+  box-shadow:0 2px 8px rgba(181,102,58,.28);
+  word-break:keep-all;
+}
+
 /* 정답 한눈에 보기 */
 .quick-answers{
   background:var(--acc-bg,var(--surface));border:1px solid var(--line);
@@ -587,6 +595,15 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     el.bookChips.innerHTML = "";
   }
 
+  /* ---------- psat-stat 유입 버튼 (5급·7급만) ---------- */
+  function statBtnHtml() {
+    if (!state.cat || !(state.cat.includes("5급") || state.cat.includes("7급"))) return "";
+    return `<a class="dl-btn stat-btn" href="https://bamdori-psat.github.io/psat-stat/" ` +
+      `target="_blank" rel="noopener" ` +
+      `data-ev="stat" data-exam="${state.year} ${state.cat}" data-area="${state.area}">` +
+      `<span class="dl-ico">📊</span> 기출 점수 합격선과 비교분석하기</a>`;
+  }
+
   /* ---------- 결과 표 ---------- */
   const AREA_CLASS = { "언어논리": "area-lang", "자료해석": "area-data", "상황판단": "area-sit" };
 
@@ -629,7 +646,10 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
         `<div class="dl-row"><a class="dl-btn" href="${encodeURI(PDF_BASE + pdfPath)}" ` +
         `download="${dlName}" target="_blank" rel="noopener" ` +
         `data-ev="pdf" data-exam="${examLabel}" data-area="${state.area}">` +
-        `<span class="dl-ico">📄</span> 기출문제 원본 다운로드 (PDF)</a></div>`;
+        `<span class="dl-ico">📄</span> 기출문제 원본 다운로드 (PDF)</a>` +
+        statBtnHtml() + `</div>`;
+    } else if (statBtnHtml()) {
+      html += `<div class="dl-row">` + statBtnHtml() + `</div>`;
     }
 
     // 정답 한눈에 보기
@@ -799,6 +819,11 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
       });
     } else if (a.dataset.ev === "pdf") {
       gtag("event", "pdf_download", {
+        exam: a.dataset.exam,
+        area: a.dataset.area,
+      });
+    } else if (a.dataset.ev === "stat") {
+      gtag("event", "stat_click", {
         exam: a.dataset.exam,
         area: a.dataset.area,
       });
