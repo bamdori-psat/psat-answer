@@ -887,6 +887,32 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
   renderCategories();
 })();
 
+/* ===== 박문각 링크 기기별 분기 — 폰에서는 모바일용 링크로 이동 ===== */
+(function () {
+  "use strict";
+  var ua = navigator.userAgent;
+  var isPhone = /iPhone|iPod|Windows Phone/i.test(ua) ||
+                (/Android/i.test(ua) && /Mobile/i.test(ua));
+  if (!isPhone) return;
+  var MAP = {
+    /* 강사홈 */
+    "https://www.pmg.co.kr/user/pno/prof16/prof_detail_v2.asp?pf=psatbamdori&ctn=37":
+      "http://www.pmg.co.kr/user/m/prof/prof_pr.asp?Pf=psatbamdori&subname=%EC%83%81%ED%99%A9%ED%8C%90%EB%8B%A8",
+    /* PSAT패스 */
+    "https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp":
+      "https://m.pmg.co.kr/user/m/pno/event/event_pmg_psat.asp?SiteID=gosispa",
+    /* 미리피셋 강의 */
+    "https://www.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&CrsCode=020220260631M":
+      "https://m.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&CrsCode=020220260631M"
+  };
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a) return;
+    var mob = MAP[a.getAttribute("href")];
+    if (mob) a.setAttribute("href", mob);
+  }, true);
+})();
+
 </script>
 </body>
 </html>
