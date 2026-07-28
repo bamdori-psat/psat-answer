@@ -163,15 +163,28 @@ body{
 .notice-thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .notice-thumbs.single{display:block;grid-template-columns:none;}
 .nt.nt-wide{display:flex;align-items:center;gap:16px;}
-.nt-wide .nt-img{flex:0 0 240px;width:240px;}
+.nt-vids{display:flex;gap:10px;flex:0 0 auto;}
+.nt-vids .nt-img{width:220px;}
 .nt-desc{display:flex;flex-direction:column;color:#5e4d33;}
 .nt-desc-title{font-size:1.02rem;font-weight:700;color:var(--chest);}
 .nt-desc-when{font-size:.92rem;margin:2px 0 8px;}
 .nt-desc-body{font-size:.92rem;line-height:1.45;}
+.nt-btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+.nt-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  padding:8px 18px;border-radius:8px;
+  font-size:.92rem;font-weight:700;text-decoration:none;
+  background:#f4ead4;color:#5e4d33;border:1px solid #e2cfa8;
+}
+.nt-btn:hover{filter:brightness(.97);}
+.nt-btn-primary{background:var(--chest);color:#fff;border-color:var(--chest);}
+.nt-btn-primary:hover{filter:brightness(1.06);}
 @media(max-width:560px){
-  .nt.nt-wide{flex-direction:column;align-items:stretch;gap:8px;}
-  .nt-wide .nt-img{flex:none;width:100%;}
-  .nt-desc{text-align:center;}
+  .nt.nt-wide{flex-direction:column;align-items:stretch;gap:10px;}
+  .nt-vids{width:100%;gap:8px;}
+  .nt-vids .nt-img{flex:1;width:auto;min-width:0;}
+  .nt-desc{text-align:center;align-items:center;}
+  .nt-btns{justify-content:center;}
 }
 .nt{display:block;text-decoration:none;color:inherit;}
 .nt-img{position:relative;display:block;aspect-ratio:16/9;border-radius:7px;overflow:hidden;background:#e7d9be;border:1px solid #e2cfa8;}
@@ -331,7 +344,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .qa-cell .a{display:block;font-size:1.1rem;font-weight:700;color:var(--ink);}
 
 /* ===== 검색량 1위 배너 ===== */
-.banner-rank{margin:0 0 16px;}
+.banner-rank{margin:20px 0 4px;}
 .banner-rank img{width:100%;height:auto;border-radius:var(--radius);display:block;}
 
 /* ===== 푸터 ===== */
@@ -375,10 +388,27 @@ table.answers tbody tr:hover{background:#f7faf9;}
 </header>
 
 <main class="wrap">
-  <!-- 검색량 1위 배너 -->
-  <section class="banner-rank">
-    <img src="banner-rank-indigo.png" width="1520" height="300"
-         alt="수험생들이 학원보다도 많이 찾는 압도적 1위 밤도리PSAT — 주요 4개 브랜드간 네이버 검색어 트렌드 검색량 비교 결과 1위 (2026.06 기준)">
+  <!-- 공지 -->
+  <section class="notice notice-yt">
+    <div class="nt nt-wide">
+      <div class="nt-vids">
+        <a class="nt-img" id="notice-video-link" href="https://youtu.be/BlnyDH3Qwhk" target="_blank" rel="noopener" aria-label="유튜브 영상 보기">
+          <img src="https://i.ytimg.com/vi/BlnyDH3Qwhk/hqdefault.jpg" alt="2027 대비 미리피셋 과정 안내 영상 1" loading="lazy">
+          <span class="nt-play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+        </a>
+        <a class="nt-img" id="notice-video2-link" href="https://youtu.be/RcbMsJrYIFU" target="_blank" rel="noopener" aria-label="유튜브 영상 보기">
+          <img src="https://i.ytimg.com/vi/RcbMsJrYIFU/hqdefault.jpg" alt="2027 대비 미리피셋 과정 안내 영상 2" loading="lazy">
+          <span class="nt-play"><span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span></span>
+        </a>
+      </div>
+      <div class="nt-desc">
+        <span class="nt-desc-title">2027 대비 미리피셋 과정 개강 임박!</span>
+        <div class="nt-btns">
+          <a class="nt-btn nt-btn-primary" id="notice-pass-link" href="https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp" target="_blank" rel="noopener">PSAT패스</a>
+          <a class="nt-btn" id="notice-lecture-link" href="https://www.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&amp;CrsCode=020220260631M" target="_blank" rel="noopener">미리피셋 강의</a>
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 1단계: 시험구분 -->
@@ -410,6 +440,12 @@ table.answers tbody tr:hover{background:#f7faf9;}
     <div class="placeholder" id="placeholder">
       <p>위에서 시험구분·연도·영역을 선택하면 정답표가 나타납니다.</p>
     </div>
+  </section>
+
+  <!-- 검색량 1위 배너 -->
+  <section class="banner-rank">
+    <img src="banner-rank-indigo.png" width="1520" height="300"
+         alt="수험생들이 학원보다도 많이 찾는 압도적 1위 밤도리PSAT — 주요 4개 브랜드간 네이버 검색어 트렌드 검색량 비교 결과 1위 (2026.06 기준)">
   </section>
 
 </main>
@@ -830,15 +866,22 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     }
   });
 
-  /* ---------- 공지 라이브 링크 클릭 추적 (GA4) ---------- */
-  const liveLink = document.getElementById("notice-live-link");
-  if (liveLink) {
-    liveLink.addEventListener("click", function () {
-      if (typeof gtag === "function") {
-        gtag("event", "notice_live_click", { link_id: "2607live" });
-      }
-    });
-  }
+  /* ---------- 공지 링크 클릭 추적 (GA4) ---------- */
+  [
+    ["notice-video-link",   "notice_video_click",   "2027miri_yt1"],
+    ["notice-video2-link",  "notice_video_click",   "2027miri_yt2"],
+    ["notice-pass-link",    "notice_pass_click",    "psat_pass"],
+    ["notice-lecture-link", "notice_lecture_click", "2027miri_lecture"],
+  ].forEach(function ([id, evt, linkId]) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.addEventListener("click", function () {
+        if (typeof gtag === "function") {
+          gtag("event", evt, { link_id: linkId });
+        }
+      });
+    }
+  });
 
   /* ---------- 초기화 ---------- */
   renderCategories();
