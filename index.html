@@ -406,6 +406,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
         <div class="nt-btns">
           <a class="nt-btn nt-btn-primary" id="notice-pass-link" href="https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp" target="_blank" rel="noopener">PSAT패스</a>
           <a class="nt-btn" id="notice-lecture-link" href="https://www.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&amp;CrsCode=020220260631M" target="_blank" rel="noopener">미리피셋 강의</a>
+          <a class="nt-btn" id="notice-book-link" href="https://product.kyobobook.co.kr/detail/S000220700037" target="_blank" rel="noopener">입문서 구매</a>
         </div>
       </div>
     </div>
@@ -872,6 +873,7 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     ["notice-video2-link",  "notice_video_click",   "2027miri_yt2"],
     ["notice-pass-link",    "notice_pass_click",    "psat_pass"],
     ["notice-lecture-link", "notice_lecture_click", "2027miri_lecture"],
+    ["notice-book-link",    "notice_book_click",    "2027miri_book"],
   ].forEach(function ([id, evt, linkId]) {
     const el = document.getElementById(id);
     if (el) {
