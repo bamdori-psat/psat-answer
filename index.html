@@ -397,11 +397,10 @@ table.answers tbody tr:hover{background:#f7faf9;}
   <section class="notice notice-yt">
     <div class="nt nt-wide">
       <div class="nt-desc">
-        <span class="nt-desc-title"><span class="ntt-a"><span aria-hidden="true">🔥</span> 2027 대비 미리피셋 과정 개강</span><span class="ntt-sep">: </span><span class="ntt-b">수리퀴즈가 어려운 모든 분들께 강력 추천</span></span>
+        <span class="nt-desc-title"><span aria-hidden="true">🔥</span> 2027 대비 상황판단 기본강의 9. 9.(수) 개강</span>
         <div class="nt-btns">
           <a class="nt-btn nt-btn-primary" id="notice-pass-link" href="https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp" target="_blank" rel="noopener">PSAT패스</a>
-          <a class="nt-btn" id="notice-lecture-link" href="https://www.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&amp;CrsCode=020220260631M" target="_blank" rel="noopener">미리피셋 강의</a>
-          <a class="nt-btn" id="notice-book-link" href="https://search.shopping.naver.com/book/catalog/61049368498?fromwhere=people" target="_blank" rel="noopener">입문서 구매</a>
+          <a class="nt-btn" id="notice-offline-link" href="https://www.pmg.co.kr/user/pna/event/event_260522j.asp" target="_blank" rel="noopener">현장강의</a>
         </div>
       </div>
     </div>
@@ -865,8 +864,7 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
   /* ---------- 공지 링크 클릭 추적 (GA4) ---------- */
   [
     ["notice-pass-link",    "notice_pass_click",    "psat_pass"],
-    ["notice-lecture-link", "notice_lecture_click", "2027miri_lecture"],
-    ["notice-book-link",    "notice_book_click",    "2027miri_book"],
+    ["notice-offline-link", "notice_offline_click", "2027sj_offline"],
   ].forEach(function ([id, evt, linkId]) {
     const el = document.getElementById(id);
     if (el) {
@@ -896,9 +894,9 @@ window.PSAT_PDF = {"5급|2005|언어논리": "pdf/5급_2005_언어논리.pdf", "
     /* PSAT패스 */
     "https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp":
       "https://m.pmg.co.kr/user/m/pno/event/event_pmg_psat.asp?SiteID=gosispa",
-    /* 미리피셋 강의 */
-    "https://www.pmg.co.kr/user/pno/lecture/lecture_detail.asp?OpenCrsCode=020220260726O&CrsCode=020220260631M":
-      "https://m.pmg.co.kr/user/m/lecture/lecture_view.asp?OpenCrsCode=020220260726O&CrsCode=020220260631M&SiteID=gosispa"
+    /* 현장강의(2027 대비 상황판단 기본강의) */
+    "https://www.pmg.co.kr/user/pna/event/event_260522j.asp":
+      "https://www.pmg.co.kr/user/new-smart/event/event_260522j.asp?SiteID=Fam005"
   };
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
