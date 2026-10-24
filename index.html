@@ -377,28 +377,22 @@ table.answers tbody tr:hover{background:#f7faf9;}
   .tables-2col .table-card:last-child:not(:first-child) thead{display:none;}
 }
 
-
-/* 두 공지: 넓은 화면은 좌우, 좁은 화면은 하나의 패널 안에 두 행 */
-.notice-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 16px;}
-.notice-item{display:flex;align-items:center;gap:12px;min-width:0;padding:12px 14px;border:1px solid #ecdcbf;border-left:4px solid var(--chest);border-radius:10px;background:#fbf3e3;}
-.notice-copy{flex:1;min-width:0;margin:0;font-size:.92rem;font-weight:700;line-height:1.5;color:var(--chest);word-break:keep-all;overflow-wrap:break-word;}
-.notice-actions{display:flex;flex:none;align-items:center;gap:6px;}
-.notice-actions .nt-btn{padding:5px 9px;min-height:30px;font-size:.8rem;line-height:1.3;white-space:nowrap;}
-.notice-training{background:#f6f5ef;border-color:#dfe4d9;border-left-color:#263c36;}
-.notice-training .notice-copy{color:#263c36;}
-.notice-training .nt-btn{background:#263c36;border-color:#263c36;color:#d7f280;}
-.notice-training .nt-btn:hover{background:#d7f280;border-color:#263c36;color:#263c36;filter:none;}
-@media(max-width:1000px){
-  .notice-board{grid-template-columns:minmax(0,1fr);gap:0;border:1px solid #ecdcbf;border-radius:10px;overflow:hidden;}
-  .notice-board .notice-item{border-top:0;border-right:0;border-bottom:0;border-radius:0;}
-  .notice-board .notice-training{border-top:1px solid #dfe4d9;}
+/* 공지: 제목과 버튼을 한 행에, 공간이 부족하면 버튼 행 전체를 아래로 */
+.notice-board{margin:0 0 16px;}
+.notice-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;min-width:0;padding:12px 14px;border:1px solid #ecdcbf;border-left:4px solid var(--chest);border-radius:10px;background:#fbf3e3;}
+.notice-copy{flex:0 1 auto;min-width:0;margin:0;font-size:.92rem;font-weight:700;line-height:1.5;color:var(--chest);word-break:keep-all;overflow-wrap:break-word;}
+.notice-actions{display:flex;flex:0 0 auto;align-items:center;gap:6px;}
+.notice-actions .nt-btn{padding:7px 10px;min-height:34px;font-size:.8rem;line-height:1.3;white-space:nowrap;}
+@media(max-width:760px){
+  .notice-item{flex-direction:column;align-items:flex-start;}
 }
 @media(max-width:480px){
-  .notice-item{padding:10px 9px;gap:8px;}
-  .notice-copy{font-size:.82rem;}
-  .notice-actions{gap:4px;}
-  .notice-actions .nt-btn{padding:5px 6px;font-size:.74rem;}
+  .notice-item{padding:10px 9px;gap:9px;}
+  .notice-copy{font-size:clamp(.65rem,3vw,.9rem);}
+  .notice-actions{width:100%;gap:6px;}
+  .notice-actions .nt-btn{flex:1;text-align:center;padding:8px 6px;min-height:36px;}
 }
+
 </style>
 </head>
 <body>
@@ -418,15 +412,12 @@ table.answers tbody tr:hover{background:#f7faf9;}
   <!-- 공지 -->
   <section class="notice-board" aria-label="공지">
     <div class="notice-item notice-lecture">
-      <p class="notice-copy"><span aria-hidden="true">🔥</span> 2027 대비 상황판단 기본강의 <span style="white-space:nowrap">9. 9.(수)</span> 개강</p>
+      <p class="notice-copy"><span aria-hidden="true">🔥</span> 전국 1위의 시선, 밤도리 수리퀴즈 강의 11월 개강</p>
       <div class="notice-actions">
-        <a class="nt-btn nt-btn-primary" id="notice-pass-link" href="https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp" target="_blank" rel="noopener">PSAT패스</a>
+        <a class="nt-btn nt-btn-primary" href="https://contents.premium.naver.com/psatbamdori/psat/contents/261025083120773uh" target="_blank" rel="noopener noreferrer">강의 안내</a>
+        <a class="nt-btn" id="notice-pass-link" href="https://www.pmg.co.kr/user/pno/event/event_pmg_psat.asp" target="_blank" rel="noopener">PSAT패스</a>
         <a class="nt-btn" id="notice-offline-link" href="https://www.pmg.co.kr/user/pna/event/event_260522j.asp" target="_blank" rel="noopener">현장강의</a>
       </div>
-    </div>
-    <div class="notice-item notice-training">
-      <p class="notice-copy">사칙연산 암산, 연속 빼기, 순간 기억 등 인지훈련 사이트 오픈!</p>
-      <div class="notice-actions"><a class="nt-btn" href="https://bamdori-psat.github.io/training/" target="_blank" rel="noopener noreferrer">바로가기</a></div>
     </div>
   </section>
 
