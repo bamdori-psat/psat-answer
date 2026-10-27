@@ -377,14 +377,20 @@ table.answers tbody tr:hover{background:#f7faf9;}
   .tables-2col .table-card:last-child:not(:first-child) thead{display:none;}
 }
 
-/* 공지: 제목과 버튼을 한 행에, 공간이 부족하면 버튼 행 전체를 아래로 */
-.notice-board{margin:0 0 16px;}
+/* 공지: PC 두 열(강의 / 라이브), 모바일 한 열 */
+.notice-board{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:0 0 16px;align-items:stretch;}
 .notice-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;min-width:0;padding:12px 14px;border:1px solid #ecdcbf;border-left:4px solid var(--chest);border-radius:10px;background:#fbf3e3;}
 .notice-copy{flex:0 1 auto;min-width:0;margin:0;font-size:.92rem;font-weight:700;line-height:1.5;color:var(--chest);word-break:keep-all;overflow-wrap:break-word;}
 .notice-actions{display:flex;flex:0 0 auto;align-items:center;gap:6px;}
 .notice-actions .nt-btn{padding:7px 10px;min-height:34px;font-size:.8rem;line-height:1.3;white-space:nowrap;}
+.notice-board .notice-lecture{flex-direction:column;flex-wrap:nowrap;align-items:flex-start;justify-content:center;gap:14px;}
+.notice-live{display:block;min-width:0;align-self:center;overflow:hidden;border:1px solid #ecdcbf;border-radius:10px;background:#fff;}
+.notice-live img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;}
+.notice-live:hover{box-shadow:0 3px 12px rgba(92,61,30,.15);}
+.notice-live:focus-visible{outline:3px solid var(--chest);outline-offset:3px;}
 @media(max-width:760px){
-  .notice-item{flex-direction:column;align-items:flex-start;}
+  .notice-board{grid-template-columns:minmax(0,1fr);}
+  .notice-board .notice-lecture{gap:10px;}
 }
 @media(max-width:480px){
   .notice-item{padding:10px 9px;gap:9px;}
@@ -419,6 +425,9 @@ table.answers tbody tr:hover{background:#f7faf9;}
         <a class="nt-btn" id="notice-offline-link" href="https://www.pmg.co.kr/user/pna/event/event_260522j.asp" target="_blank" rel="noopener">현장강의</a>
       </div>
     </div>
+    <a class="notice-live" href="https://www.youtube.com/live/1YlG0frdEL8?si=38jvIQqyr0fF0jfC" target="_blank" rel="noopener noreferrer" aria-label="전국 1위에게 무엇이든 물어보세요 — 밤도리 PSAT 유튜브 라이브 보기 (새 창)">
+      <img src="https://i.ytimg.com/vi/1YlG0frdEL8/maxresdefault.jpg" width="1280" height="720" alt="밤도리 PSAT LIVE — 전국 1위에게 무엇이든 물어보세요, 실시간 Q&amp;A" decoding="async">
+    </a>
   </section>
 
   <!-- 1단계: 시험구분 -->
