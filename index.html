@@ -354,7 +354,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
 
 /* ===== 푸터 ===== */
 .site-footer{border-top:1px solid var(--line);background:var(--surface);padding:18px 0;}
-.site-footer .wrap{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 18px;}
+.site-footer .wrap{display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;}
 .site-footer .foot-label{color:var(--ink-soft);font-weight:700;font-size:.85rem;}
 .site-footer a{color:var(--blue);text-decoration:none;font-size:.9rem;font-weight:600;}
 .site-footer a:hover{text-decoration:underline;}
@@ -392,6 +392,24 @@ table.answers tbody tr:hover{background:#f7faf9;}
   .notice-actions{width:100%;gap:6px;}
   .notice-actions .nt-btn{flex:1;text-align:center;padding:8px 6px;min-height:36px;}
 }
+
+/* 푸터 3행: 이름 / 연락처 / 해설모음 */
+.site-footer .foot-icons{display:flex;justify-content:center;gap:10px;}
+.site-footer .fi{width:38px;height:38px;border-radius:10px;background:#f4e9dd;color:#9c5630;display:inline-flex;align-items:center;justify-content:center;transition:transform .15s,background .15s;}
+.site-footer .fi:hover{transform:translateY(-1px);background:#fff;text-decoration:none;}
+.site-footer .fi:focus-visible{outline:2px solid currentColor;outline-offset:3px;}
+.site-footer .fi-insta{background:#fbe4ee;color:#b5306c;}
+.site-footer .fi-kakao{background:#fbf3d6;color:#8a6d1a;}
+.site-footer .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.site-footer .footer-collections{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
+.site-footer .footer-collections a{white-space:nowrap;}
+
+/* 네이버 블로그 연락처 */
+.naver-blog-icon{display:block;width:20px;height:20px;object-fit:contain;}
+.fi.fi-naver{background:#e5f8ec;color:#03c75a;}
+.fi.fi-naver:hover{background:#fff;box-shadow:0 0 0 1px #03c75a;}
+
+.site-footer .fi-naver{background:#e5f8ec;color:#03c75a;}
 
 </style>
 </head>
@@ -463,8 +481,14 @@ table.answers tbody tr:hover{background:#f7faf9;}
 <footer class="site-footer">
   <div class="wrap">
     <span class="foot-label">밤도리 PSAT</span>
-    <a href="https://contents.premium.naver.com/psatbamdori/psat/contents/230723194227686hg" target="_blank" rel="noopener">논리퀴즈 해설모음</a>
-    <a href="https://contents.premium.naver.com/psatbamdori/psat/contents/231112220820000bl" target="_blank" rel="noopener">논증실험 해설모음</a>
+    <nav class="foot-icons" aria-label="연락처">
+      <a class="fi" href="mailto:zoloalfram@gmail.com" aria-label="이메일" title="이메일"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="m3.5 7 8.5 6 8.5-6"/></svg></a>
+      <a class="fi fi-insta" href="https://www.instagram.com/psat_bamdori/" target="_blank" rel="noopener" aria-label="인스타그램" title="인스타그램"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor"/></svg></a>
+      <a class="fi fi-kakao" href="https://open.kakao.com/me/psat_bamdori" target="_blank" rel="noopener" aria-label="카카오톡" title="카카오톡"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3-8.5 6.7 0 2.4 1.6 4.5 4 5.7l-.9 3.6 4-2.6c.5.1.9.1 1.4.1 4.7 0 8.5-3 8.5-6.8S16.7 4.5 12 4.5Z"/></svg></a>
+      <a class="fi fi-naver" href="https://blog.naver.com/bamdori_sub" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" title="네이버 블로그"><img class="naver-blog-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACfCVbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVRYCe1WQU7CQBT9v5ToznqDegLYKa44gm7RxHoDOYF6AvEEYkLQnXIC2ShLvYF4gyYkgNLO9w+xZlpb+iG6srNg5v/5897jz2MCQDGKDvz3DuBfNqA0aHiMf6U5wlo3lcvWm2mDD5OZzwIwa1ZZW6sc+s0zhYBMDyTb7Dx7zmj6sYeIFSJy2FFvZNFLuH1zn6xdJhYLGE1mr4DgMPkcf/6pENisQwTrOKh1+ssQR7VyDyA50aHE7BKoB3twWE/kRaFcQA4coboDvqacsh/bcgGEPli0H66PN0NQW+yB8xgagVOevHuxnCAQewCQmobh/ADgzB40gL1wGvEowDqvW1EsmWUdQPD5JWwnAQNQ8RxCJVmTF8sEEPh5QKvuywQAuGkGs8F2TWLUPllySAWAPZl937Xm0A8ToLow+fTDZMaStdiEhHRiPx3U2Yw9QNzQryITuCYJknVtxpK1WIAGYxFVnqrw9RrGCBDawU6nH8sJAvEVLMJCwH64Nm4uqsnak3WAf4b8rXsAeJQAGlpEl7PdbiuRF4eZAjL+AXnlx4a+BihZyp/WboehmKooLDpQdCC9A5/JuH+Zqhm6qAAAAABJRU5ErkJggg==" width="20" height="20" alt="" aria-hidden="true"></a>
+    </nav>
+    <div class="footer-collections"><a href="https://contents.premium.naver.com/psatbamdori/psat/contents/230723194227686hg" target="_blank" rel="noopener">논리퀴즈 해설모음</a>
+      <a href="https://contents.premium.naver.com/psatbamdori/psat/contents/231112220820000bl" target="_blank" rel="noopener">논증실험 해설모음</a></div>
   </div>
 </footer>
 
