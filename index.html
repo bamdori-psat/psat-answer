@@ -377,19 +377,39 @@ table.answers tbody tr:hover{background:#f7faf9;}
   .tables-2col .table-card:last-child:not(:first-child) thead{display:none;}
 }
 
-/* 공지: 제목과 버튼을 한 행에, 공간이 부족하면 버튼 행 전체를 아래로 */
-.notice-board{margin:0 0 16px;}
-.notice-item{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px 16px;min-width:0;padding:12px 14px;border:1px solid #ecdcbf;border-left:4px solid var(--chest);border-radius:10px;background:#fbf3e3;}
-.notice-copy{flex:0 1 auto;min-width:0;margin:0;font-size:.92rem;font-weight:700;line-height:1.5;color:var(--chest);word-break:keep-all;overflow-wrap:break-word;}
-.notice-actions{display:flex;flex:0 0 auto;align-items:center;gap:6px;}
+/* 공지: 충분히 넓으면 A/B 두 열, 좁으면 A 다음 B */
+.notice-board{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 16px;}
+.notice-item{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:12px;min-width:0;min-height:0;padding:16px;border:1px solid #ecdcbf;border-left:4px solid var(--chest);border-radius:10px;background:#fbf3e3;}
+.notice-copy{min-width:0;margin:0;font-size:.92rem;font-weight:700;line-height:1.5;color:var(--chest);word-break:keep-all;overflow-wrap:break-word;}
+.notice-actions{display:flex;align-items:center;gap:6px;}
 .notice-actions .nt-btn{padding:7px 10px;min-height:34px;font-size:.8rem;line-height:1.3;white-space:nowrap;}
+.notice-live{display:grid;grid-template-columns:176px minmax(0,1fr);align-items:center;gap:20px;min-width:0;min-height:0;padding:12px 16px;border:1px solid #ecdcbf;border-radius:10px;background:#fffaf2;color:var(--chest);text-decoration:none;}
+.notice-live-thumb{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain;border-radius:6px;}
+.notice-live-copy{min-width:0;}
+.notice-live-copy p{margin:0;line-height:1.6;word-break:keep-all;overflow-wrap:break-word;}
+.notice-live-schedule{font-size:.85rem;font-weight:700;color:#b53030;}
+.notice-live-title{font-size:1rem;font-weight:700;}
+.notice-live-title span{display:inline-block;}
+.notice-live-topics{font-size:.92rem;}
+.notice-live:hover{border-color:var(--chest);}
+.notice-live:focus-visible{outline:3px solid var(--chest);outline-offset:3px;}
+@media(min-width:840px){
+  .notice-board{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch;}
+  .notice-item{padding:7px 12px;gap:8px;}
+  .notice-live{grid-template-columns:120px minmax(0,1fr);gap:10px;padding:7px 12px;}
+  .notice-live-schedule{font-size:.85rem;}
+  .notice-live-title{font-size:.85rem;}
+  .notice-live-topics{font-size:.85rem;}
+}
 @media(max-width:760px){
-  .notice-item{flex-direction:column;align-items:flex-start;}
+  .notice-item{min-height:0;padding:14px;}
+  .notice-live{grid-template-columns:clamp(80px,24vw,120px) minmax(0,1fr);gap:10px;padding:7px 10px;min-height:0;}
+  .notice-live-copy{padding:0;text-align:left;}
+  .notice-live-title{font-size:.85rem;}
+  .notice-live-schedule,.notice-live-topics{font-size:.8rem;}
 }
 @media(max-width:480px){
-  .notice-item{padding:10px 9px;gap:9px;}
-  .notice-copy{font-size:clamp(.65rem,3vw,.9rem);}
-  .notice-actions{width:100%;gap:6px;}
+  .notice-actions{width:100%;}
   .notice-actions .nt-btn{flex:1;text-align:center;padding:8px 6px;min-height:36px;}
 }
 
@@ -437,6 +457,14 @@ table.answers tbody tr:hover{background:#f7faf9;}
         <a class="nt-btn" id="notice-offline-link" href="https://www.pmg.co.kr/user/pna/event/event_260522j.asp" target="_blank" rel="noopener">현장강의</a>
       </div>
     </div>
+    <a class="notice-live" href="https://youtube.com/live/YkJvYHGpfBk?feature=share" target="_blank" rel="noopener noreferrer" aria-label="매주 목요일 밤 9시, 전국 1위와 함께하는 PSAT 무물 LIVE: 공부법, 고민상담 — 유튜브에서 보기 (새 창)">
+      <img class="notice-live-thumb" src="psat-live-original-20261105.jpg" width="1182" height="665" alt="PSAT 무물 LIVE 유튜브 썸네일" decoding="async">
+      <div class="notice-live-copy">
+        <p class="notice-live-schedule">매주 목요일 밤 9시</p>
+        <p class="notice-live-title"><span>전국 1위와 함께하는</span> <span>PSAT 무물 LIVE:</span></p>
+        <p class="notice-live-topics">공부법, 고민상담</p>
+      </div>
+    </a>
   </section>
 
   <!-- 1단계: 시험구분 -->
