@@ -101,7 +101,10 @@ body{
 #main-header-tools.short-guide .guide-prefix{display:none}
 #main-header-tools.compact{gap:4px}
 #main-header-tools.compact .hbtn{padding-inline:6px;gap:3px}
-.collection-actions{margin-top:8px}
+.header-groups{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px}
+.header-groups .header-actions{margin:0;max-width:100%;min-width:0}
+.collection-actions .hbtn{background:#fbeae8;color:#85332e;border-color:#edb4af}
+.collection-actions .hbtn:hover{background:#f7d6d2;border-color:#d6534a}
 .hbtn:hover{background:rgba(255,255,255,.28);}
 .hbtn:active{transform:translateY(1px);}
 
@@ -428,8 +431,6 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .site-footer .fi-insta{background:#fbe4ee;color:#b5306c;}
 .site-footer .fi-kakao{background:#fbf3d6;color:#8a6d1a;}
 .site-footer .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.site-footer .footer-collections{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
-.site-footer .footer-collections a{white-space:nowrap;}
 
 /* 네이버 블로그 연락처 */
 .naver-blog-icon{display:block;width:20px;height:20px;object-fit:contain;}
@@ -445,6 +446,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
   <div class="wrap">
     <h1>🌰 PSAT 기출 정답·해설 모음</h1>
     <p class="subtitle">시험구분 → 연도 → 영역을 고르면 문항별 정답과 해설 링크를 보여드립니다.</p>
+    <div class="header-groups">
     <div class="header-actions" id="main-header-tools">
       <button id="btn-bookmark" class="hbtn" type="button"><span aria-hidden="true">☆</span> 즐겨찾기</button>
       <button id="btn-share" class="hbtn" type="button"><span aria-hidden="true">↗</span> 공유하기</button>
@@ -454,6 +456,7 @@ table.answers tbody tr:hover{background:#f7faf9;}
       <a class="hbtn" href="collections/logic/index.html">논리·퀴즈 해설</a>
       <a class="hbtn" href="collections/argument/index.html">논증·실험 해설</a>
     </nav>
+    </div>
   </div>
 </header>
 
@@ -526,8 +529,6 @@ table.answers tbody tr:hover{background:#f7faf9;}
       <a class="fi fi-kakao" href="https://open.kakao.com/me/psat_bamdori" target="_blank" rel="noopener" aria-label="카카오톡" title="카카오톡"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5c-4.7 0-8.5 3-8.5 6.7 0 2.4 1.6 4.5 4 5.7l-.9 3.6 4-2.6c.5.1.9.1 1.4.1 4.7 0 8.5-3 8.5-6.8S16.7 4.5 12 4.5Z"/></svg></a>
       <a class="fi fi-naver" href="https://blog.naver.com/bamdori_sub" target="_blank" rel="noopener noreferrer" aria-label="네이버 블로그" title="네이버 블로그"><img class="naver-blog-icon" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAeGVYSWZNTQAqAAAACAAEARoABQAAAAEAAAA+ARsABQAAAAEAAABGASgAAwAAAAEAAgAAh2kABAAAAAEAAABOAAAAAAAAAEgAAAABAAAASAAAAAEAA6ABAAMAAAABAAEAAKACAAQAAAABAAAAIKADAAQAAAABAAAAIAAAAACfCVbEAAAACXBIWXMAAAsTAAALEwEAmpwYAAABt0lEQVRYCe1WQU7CQBT9v5ToznqDegLYKa44gm7RxHoDOYF6AvEEYkLQnXIC2ShLvYF4gyYkgNLO9w+xZlpb+iG6srNg5v/5897jz2MCQDGKDvz3DuBfNqA0aHiMf6U5wlo3lcvWm2mDD5OZzwIwa1ZZW6sc+s0zhYBMDyTb7Dx7zmj6sYeIFSJy2FFvZNFLuH1zn6xdJhYLGE1mr4DgMPkcf/6pENisQwTrOKh1+ssQR7VyDyA50aHE7BKoB3twWE/kRaFcQA4coboDvqacsh/bcgGEPli0H66PN0NQW+yB8xgagVOevHuxnCAQewCQmobh/ADgzB40gL1wGvEowDqvW1EsmWUdQPD5JWwnAQNQ8RxCJVmTF8sEEPh5QKvuywQAuGkGs8F2TWLUPllySAWAPZl937Xm0A8ToLow+fTDZMaStdiEhHRiPx3U2Yw9QNzQryITuCYJknVtxpK1WIAGYxFVnqrw9RrGCBDawU6nH8sJAvEVLMJCwH64Nm4uqsnak3WAf4b8rXsAeJQAGlpEl7PdbiuRF4eZAjL+AXnlx4a+BihZyp/WboehmKooLDpQdCC9A5/JuH+Zqhm6qAAAAABJRU5ErkJggg==" width="20" height="20" alt="" aria-hidden="true"></a>
     </nav>
-    <div class="footer-collections"><a href="collections/logic/index.html">논리퀴즈 해설모음</a>
-      <a href="collections/argument/index.html">논증실험 해설모음</a></div>
   </div>
 </footer>
 

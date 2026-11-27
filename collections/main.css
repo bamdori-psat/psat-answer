@@ -53,6 +53,15 @@ body{
   color:#fff;font-size:.9rem;font-weight:600;text-decoration:none;
   transition:background .15s,transform .05s;
 }
+#main-header-tools{flex-wrap:nowrap}
+#main-header-tools .hbtn,.collection-actions .hbtn{flex:none;white-space:nowrap}
+#main-header-tools.short-guide .guide-prefix{display:none}
+#main-header-tools.compact{gap:4px}
+#main-header-tools.compact .hbtn{padding-inline:6px;gap:3px}
+.header-groups{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px}
+.header-groups .header-actions{margin:0;max-width:100%;min-width:0}
+.collection-actions .hbtn{background:#fbeae8;color:#85332e;border-color:#edb4af}
+.collection-actions .hbtn:hover{background:#f7d6d2;border-color:#d6534a}
 .hbtn:hover{background:rgba(255,255,255,.28);}
 .hbtn:active{transform:translateY(1px);}
 
@@ -379,8 +388,6 @@ table.answers tbody tr:hover{background:#f7faf9;}
 .site-footer .fi-insta{background:#fbe4ee;color:#b5306c;}
 .site-footer .fi-kakao{background:#fbf3d6;color:#8a6d1a;}
 .site-footer .ic{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
-.site-footer .footer-collections{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 18px;}
-.site-footer .footer-collections a{white-space:nowrap;}
 
 /* 네이버 블로그 연락처 */
 .naver-blog-icon{display:block;width:20px;height:20px;object-fit:contain;}
