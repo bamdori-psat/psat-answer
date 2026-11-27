@@ -45,7 +45,7 @@ body{
 /* 헤더 액션 버튼 (즐겨찾기·공유) */
 .header-actions{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;}
 .hbtn{
-  appearance:none;cursor:pointer;font-family:inherit;
+  appearance:none;cursor:pointer;font-family:inherit;line-height:1.6;white-space:nowrap;
   display:inline-flex;align-items:center;gap:6px;
   padding:8px 16px;border-radius:999px;
   background:rgba(255,255,255,.16);
@@ -58,7 +58,7 @@ body{
 #main-header-tools.short-guide .guide-prefix{display:none}
 #main-header-tools.compact{gap:4px}
 #main-header-tools.compact .hbtn{padding-inline:6px;gap:3px}
-.header-groups{display:flex;flex-wrap:wrap;align-items:center;gap:8px 10px;margin-top:16px}
+.header-groups{display:flex;flex-wrap:wrap;align-items:center;gap:16px 10px;margin-top:16px}
 .header-groups .header-actions{margin:0;max-width:100%;min-width:0}
 .collection-actions .hbtn{background:#fbeae8;color:#85332e;border-color:#edb4af}
 .collection-actions .hbtn:hover{background:#f7d6d2;border-color:#d6534a}
