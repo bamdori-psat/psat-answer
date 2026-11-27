@@ -14,3 +14,16 @@ form.addEventListener('submit', event => {
   input.focus();
 });
 input.addEventListener('input', () => { error.hidden = true; });
+
+const choices = document.querySelectorAll('button[aria-controls]');
+for (const choice of choices) {
+  choice.addEventListener('click', () => {
+    const expand = choice.getAttribute('aria-expanded') === 'false';
+    for (const button of choices) {
+      const selected = expand && button === choice;
+      button.classList.toggle('active', selected);
+      button.setAttribute('aria-expanded', String(selected));
+      document.getElementById(button.getAttribute('aria-controls')).hidden = !selected;
+    }
+  });
+}

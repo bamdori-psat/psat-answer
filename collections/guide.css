@@ -1,23 +1,8 @@
-*{box-sizing:border-box}
-body{margin:0;background:#eef2f7;color:#2a2e35;font:1rem/1.6 "Noto Sans KR",system-ui,sans-serif}
-.wrap{max-width:820px;margin:auto;padding:0 18px}
-header{background:linear-gradient(160deg,#33507f,#1e2e4d);color:white;padding:24px 0}
-header a{color:#e6ecf5;text-decoration:none;font-size:.9rem}
-h1{font-size:clamp(1.4rem,4vw,1.75rem);margin:8px 0 0}
-section{margin:18px 0;background:white;border:1px solid #e1e7f0;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px #2030500c;scroll-margin-top:12px}
-form{padding:16px}
-label,h2{font-weight:700;color:#2c4068}
-.controls{display:flex;gap:8px;margin-top:6px}
-input,button{font:inherit;border-radius:8px;padding:9px 14px}
-input{width:10em;min-width:0;border:1px solid #929eaf}
-button{background:#2c4068;color:white;font-weight:700;border:0;cursor:pointer}
-#error{margin:6px 0 0;color:#9b3228}
-nav{display:flex;gap:6px;flex-wrap:wrap}
-nav a{color:#2c4068;background:white;border:1px solid #cbd4e2;border-radius:20px;padding:5px 12px;text-decoration:none}
-h2{margin:0;padding:12px 16px;font-size:1.1rem}
-table{width:100%;border-collapse:collapse;text-align:left}
-thead{background:#e6ecf5;color:#2c4068;font-size:.88rem}
-th,td{padding:6px 14px;border-top:1px solid #e1e7f0}
-th:first-child{text-align:center;width:30%}
-td a{display:block;padding:4px 0;color:#365b78;text-underline-offset:3px}
-footer{text-align:center;padding:20px;color:#68707c}
+.controls{display:flex;flex-wrap:wrap;gap:8px}
+.controls input{width:9em;max-width:100%;padding:7px 12px;font:inherit;border:1px solid var(--line);border-radius:7px}
+.step-label{font-size:1.2rem}
+.result-title{margin:0;font-size:1.3rem}
+table.answers thead th{font-size:1.1rem}
+table.answers .page-col,table.answers .col-no{text-align:center}
+.page-col{width:8rem}
+#error{margin:8px 0 0;color:#96362e}
